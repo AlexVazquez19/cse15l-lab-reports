@@ -36,3 +36,6 @@ print("world")
 I added this text in VScode
 
 ![This is another Image](https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/28.png&h=200&w=200)
+
+[Lab Report 1](lab-report-1-week-2.html)
+[Lab Report 1](https://AlexVazquez19.github.io/cse15l-lab-reports/lab-report-1-week-2.html)
