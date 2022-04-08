@@ -32,3 +32,7 @@ Inline code: `System.out.println("Hello World!");`
 print("hello")
 print("world")
 ```
+
+I added this text in VScode
+
+![This is another Image](https://a.espncdn.com/combiner/i?img=/i/teamlogos/ncaa/500/28.png&h=200&w=200)
