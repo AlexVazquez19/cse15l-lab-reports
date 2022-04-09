@@ -38,3 +38,12 @@ In this example I created a text file called hello.txt using the `cat` command, 
 
 ![screenshot 7](lab1-screenshots/lab1-screenshot7.png)
 In the example above, I created three new text files using the `touch` command. Then I once again used the `ls` command to see the files in my current directory, which displayed the new files I created. Then I used the `rm` command followed by the names of the three files to delete them all in one line.
+
+Step 4: Moving files with `SCP`
+---
+An important part of working through a remote computer is being able to securely copy files back and forth between your local computer and the remote host. You can do this using the `scp` command, which stands for secure copy. To securely copy a file from the client (your local computer) to the remote computer, use the following command:
+
+`scp fileName.java cs15lsp22zz@ieng6.ucsd.edu:~/`
+
+Below is an example of creating a file called WhereAmI.java on my local computer, securely copying it to the remote computer, and then running it on the remote computer. As expected, running the file gives a different output depending on where it is being ran from.
+![screenshot 8](lab1-screenshots/lab1-screenshot8.png)
