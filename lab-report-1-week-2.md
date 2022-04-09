@@ -19,7 +19,9 @@ In order to connect to a remote computer over the internet, you must first open 
 
 `ssh cs15lsp22zz@ieng6.ucsd.edu` 
 
-IMPORTANT: replace zz with the letters associated with your account. SSH stands for Secure Socket Shell and is a protocol which allows you to connect securely to a remote computer or server. After running the command, you should see the following: 
+* IMPORTANT: replace zz with the letters associated with your account
+* SSH stands for Secure Socket Shell and is a protocol which allows you to connect securely to a remote computer or server
+* After running the command, you should see the following: 
 
 ![screenshot 3](lab1-screenshots/lab1-screenshot3.png)
 
@@ -39,11 +41,28 @@ In this example I created a text file called hello.txt using the `cat` command, 
 ![screenshot 7](lab1-screenshots/lab1-screenshot7.png)
 In the example above, I created three new text files using the `touch` command. Then I once again used the `ls` command to see the files in my current directory, which displayed the new files I created. Then I used the `rm` command followed by the names of the three files to delete them all in one line.
 
-Step 4: Moving files with `SCP`
+Step 4: Moving files with `scp`
 ---
 An important part of working through a remote computer is being able to securely copy files back and forth between your local computer and the remote host. You can do this using the `scp` command, which stands for secure copy. To securely copy a file from the client (your local computer) to the remote computer, use the following command:
 
 `scp fileName.java cs15lsp22zz@ieng6.ucsd.edu:~/`
 
 Below is an example of creating a file called WhereAmI.java on my local computer, securely copying it to the remote computer, and then running it on the remote computer. As expected, running the file gives a different output depending on where it is being ran from.
+
 ![screenshot 8](lab1-screenshots/lab1-screenshot8.png)
+
+Step 5: Setting an SSH key
+---
+In order to make working through a remote computer more efficient, it would help if we didn't have to re-type our password every time we use `ssh` or `scp`. Thankfully, we can set an SSH key to do just that. Run the following command to set an SSH key:
+
+`ssh-keygen`
+
+* This creates public and private keys which are stored on the server and client
+* We need to copy the public key to the .ssh directory of the remote server
+* Running the command above will first ask you the directory to save the public key to on your local computer, and then ask for a passphase (not needed)
+* Before logging into the remote server, you must first copy the *public* key to the .ssh directory of your user account on the server (you may need to login and create a .ssh directory using the command `mkdir .ssh`)
+
+![screenshot 9](lab1-screenshots/lab1-screenshot9.png)
+
+Below is me connecting to the remote computer without needing to enter a password.
+![screenshot 10](lab1-screenshots/lab1-screenshot10.png)
