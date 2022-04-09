@@ -1,4 +1,4 @@
-# Week 2 Lab Report
+# Lab Report 1
 This report covers how to log into a course-specific account on `ieng6`.
 
 Step 1: Install Visual Studio Code
@@ -29,17 +29,13 @@ Step 3: Try out some commands
 ---
 Below are some examples of commands you can try.
 
-![screenshot 4](lab1-screenshots/lab1-screenshot4.png)
-In the example above I created a new directory called test_directory using the `mkdir` command. Then I navigated to the directory using the `cd` command. Then I navigated back to the parent directory using the `cd ..` command. Next I deleted the directory using the `rmdir` command.
+![screenshot 4](lab1-screenshots/lab1-screenshot4.png) In the example above I created a new directory called test_directory using the `mkdir` command. Then I navigated to the directory using the `cd` command. Then I navigated back to the parent directory using the `cd ..` command. Next I deleted the directory using the `rmdir` command.
 
-![screenshot 5](lab1-screenshots/lab1-screenshot5.png)
-In this example, I used the command `ls` to list the files in my current directory. Then I used the `rm` command to remove the files.
+![screenshot 5](lab1-screenshots/lab1-screenshot5.png) In this example, I used the command `ls` to list the files in my current directory. Then I used the `rm` command to remove the files.
 
-![screenshot 6](lab1-screenshots/lab1-screenshot6.png)
-In this example I created a text file called hello.txt using the `cat` command, and I appended some text to it. Then I ran the command `cat hello.txt` to print the contents of the file.
+![screenshot 6](lab1-screenshots/lab1-screenshot6.png) In this example I created a text file called hello.txt using the `cat` command, and I appended some text to it. Then I ran the command `cat hello.txt` to print the contents of the file.
 
-![screenshot 7](lab1-screenshots/lab1-screenshot7.png)
-In the example above, I created three new text files using the `touch` command. Then I once again used the `ls` command to see the files in my current directory, which displayed the new files I created. Then I used the `rm` command followed by the names of the three files to delete them all in one line.
+![screenshot 7](lab1-screenshots/lab1-screenshot7.png) In the example above, I created three new text files using the `touch` command. Then I once again used the `ls` command to see the files in my current directory, which displayed the new files I created. Then I used the `rm` command followed by the names of the three files to delete them all in one line.
 
 Step 4: Moving files with `scp`
 ---
@@ -66,3 +62,12 @@ In order to make working through a remote computer more efficient, it would help
 
 Below is me connecting to the remote computer without needing to enter a password.
 ![screenshot 10](lab1-screenshots/lab1-screenshot10.png)
+
+Step 6: Optimizing Remote Running
+---
+To make the process of working between a local and remote computer even faster, we can do the following:
+
+* Write a command in quotes at the and of an `ssh` command to directly run it on the remote server, like so: ![screenshot 12](lab1-screenshots/lab1-screenshot12.png)
+* Use semicolons to run multiple commands in the same line, like in the screenshot below. In this example, I connected to the remote server, compiled WhereAmI.java, ran it, and exited the remote server in the same line. ![screenshot 11](lab1-screenshots/lab1-screenshot11.png)
+* Use the up arrow to recall the last command that was run
+
