@@ -1,4 +1,4 @@
-# Lab Report 1
+# Lab Report 2
 This report covers three code changes from lab 3 that fixed bugs in the original code.
 
 Change 1
