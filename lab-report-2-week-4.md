@@ -15,7 +15,7 @@ In order to fix this bug, I made it so that the code would check if there was an
 
 ![screenshot 3](LR2-screenshots/LR2-screenshot3.png)
 
-**Relationship between bug, symptom, and failure inducing input**
+***Relationship between bug, symptom, and failure inducing input:***
 
 In this case, the bug was that the code would incorrectly capture image links and return them in the final output. The symptom was that the image links would be returned in the list and could be visibly seen by the user. The failure inducing input was any markdown file that conatained an image.
 
@@ -34,7 +34,7 @@ In order to fix this bug, I added the line `&& openParen == closeBracket` to the
 
 ![screenshot 6](LR2-screenshots/LR2-screenshot6.png)
 
-**Relationship between bug, symptom, and failure inducing input**
+***Relationship between bug, symptom, and failure inducing input:***
 
 In this case, the bug was that the code would return text that was in between parenthesis as long as it came after a set of brackets, no matter how far apart the brackets and parenthesis may be. The symptom was the actual text being returned in the list (the output including `this is not a link` as seen above). The failure inducing input was any markdown file that contains a set of parenthesis following a set of brackets with space between them.
 
@@ -44,4 +44,14 @@ The final bug I encountered was that the original code would consider any text i
 
 ![screenshot 7](LR2-screenshots/LR2-screenshot7.png)
 
+When running the code on this file, the returned list will mistakenly include `this is not a url`, as seen in the screenshot below. Obviously, `this is not a url` is not an actual URL and thus should not be considered one by the code.
 
+![screenshot 8](LR2-screenshots/LR2-screenshot8.png)
+
+I fixed this bug by adding the line `markdown.substring(openParen + 1, closeParen).contains(" ") == false`. This line ensures that there is no space inside the text that is in the parenthesis before adding it to the list to be returned. My reasoning behind this is that URLs will never contain a space, so it is a good way to reduce the number of failure inducing inputs. Unfortunately, I understand this fix is not all-encompassing because text that has no spaces (such as `thisisnotaurl`) would still be returned.
+
+![screenshot 9](LR2-screenshots/LR2-screenshot9.png)
+
+***Relationship between bug, symptom, and failure inducing input:***
+
+In this example, the bug was that the code would return any text inside the parenthesis, regardless of whether it was actually a URL or not. The symptom was the code including text that is not a URL in the output list (`this is not a url` in the example above). The failure inducing input was any markdown file that contained the correct syntax for making a URL, except that the parenthesis did not actually contain a URL (i.e. `[link](not a link)`).
