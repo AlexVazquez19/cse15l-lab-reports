@@ -7,11 +7,11 @@ The first bug that I encountered was that MarkdownParse.java would incorrectly r
 
 ![screenshot 1](LR2-screenshots/LR2-screenshot1.png)
 
-Because the original code only identifies URLs by finding a set of brackets and parenthesis, it will also capture image links since images also use brackets and parenthesis. The resulting output is shown below. As you can see, the list includes the link to the image 'this_is_an_image.png'.
+Because the original code only identifies URLs by finding a set of brackets and parenthesis, it will also capture image links since images also use brackets and parenthesis. The resulting output is shown below. As you can see, the list includes the link to the image `this_is_an_image.png`.
 
 ![screenshot 2](LR2-screenshots/LR2-screenshot2.png)
 
-In order to fix this bug, I made it so that the code would check if there was an exclamation mark before the first bracket before the link was added to the returned list. As you can see in the diff screenshot below, I added a new integer variable called 'exclamationPoint' to get the index of the first exclamation point from currentIndex. Then I added an if statement that checks if the exclamation point index is right before the index for the first bracket. If it is, the link is for an image and is therefore not added to the final list to be returned.
+In order to fix this bug, I made it so that the code would check if there was an exclamation mark before the first bracket before the link was added to the returned list. As you can see in the diff screenshot below, I added a new integer variable called `exclamationPoint` to get the index of the first exclamation point from `currentIndex`. Then I added an if statement that checks if the exclamation point index is right before the index for the first bracket (in other words, if `exclamationPoint` equals `openBracket` minus one). If it is, the link is for an image and is therefore not added to the final list to be returned.
 
 ![screenshot 3](LR2-screenshots/LR2-screenshot3.png)
 
@@ -22,3 +22,22 @@ In this case, the bug was that the code would incorrectly capture image links an
 
 Change 2
 ---
+The second bug I noticed was that MarkdownParse.java would think that any set of parenthesis after a set of brackets would be a link, and so it would still return the contents inside the parenthesis even if the brackets weren't directly behind them. Below is what the failure inducing test file looks like, and [here is a link to it.](https://github.com/AlexVazquez19/markdown-parser/blob/main/test-file2.md)
+
+![screenshot 5](LR2-screenshots/LR2-screenshot5.png)
+
+As you can see by the output below, the code incorrectly includes `this is not a link` in the output list.
+
+![screenshot 4](LR2-screenshots/LR2-screenshot4.png)
+
+In order to fix this bug, I added the line `&& openParen == closeBracket` to the if statement that adds the link to the returned list. This code checks if the index of the closing bracket is right before the index of the opening parenthesis, and if not then the text within the parenthesis will not be added to the list to be returned.
+
+![screenshot 6](LR2-screenshots/LR2-screenshot6.png)
+
+**Relationship between bug, symptom, and failure inducing input**
+
+In this case, the bug was that the code would return text that was in between parenthesis as long as it came after a set of brackets, no matter how far apart the brackets and parenthesis may be. The symptom was the actual text being returned in the list (the output including `this is not a link` as seen above). The failure inducing input was any markdown file that contains a set of parenthesis following a set of brackets with space between them.
+
+Change 3
+---
+
