@@ -40,4 +40,8 @@ In this case, the bug was that the code would return text that was in between pa
 
 Change 3
 ---
+The final bug I encountered was that the original code would consider any text in between parenthesis as a link (given that the parenthesis are preceded by a pair of brackets). Take a look at the [failure inducing test file](https://github.com/AlexVazquez19/markdown-parser/blob/main/test-file3.md) below.
+
+![screenshot 7](LR2-screenshots/LR2-screenshot7.png)
+
 
