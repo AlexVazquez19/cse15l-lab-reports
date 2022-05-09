@@ -37,3 +37,21 @@ As seen by the [commit linked here](https://github.com/AlexVazquez19/markdown-pa
 
 Copying Whole Directories with `scp -r`
 ---
+In order to save time copying an entire directory to a remote server, we can use the `scp -r` command to copy all files within a directory (including any sub-directories). The `r` indicates that it will recursively copy files into the indicated server until there are no more left to copy from within the directory. This prevents us from having to copy over every file individually using just `scp`, which would be very inefficient.
+
+Below is a screenshot of me running the command `scp -r . cs15lsp22atv@ieng6.ucsd.edu:~/markdown-parse` to copy my directory markdown-parse into the remote server.
+
+![screenshot 8](LR3-screenshots/LR3-screenshot8.png)
+
+To verify that it was copied successfully, I logged into the remote server using the command `ssh ieng6`. Then I used `ls` to see the files/folders in my current directory, and markdown-parser was there as expected (circled in red in the screenshot below). Then I compiled and ran MarkdownParse.java.
+
+![screenshot 9](LR3-screenshots/LR3-screenshot9.png)
+
+Lastly, using the command below I was able to copy the directory, login to the remote server, and compile and run MarkdownParse.java all in one line.
+
+`scp -r . ieng6:~/markdown-parse; ssh ieng6 "cd markdown-parse; javac MarkdownParse.java; java MarkdownParse test-file.md"`
+
+To break down this command:
+* `scp -r . ieng6:~/markdown-parse;` copies the directory to the remote server
+* `ssh ieng6` connects me to the remote server
+* `"cd markdown-parse; javac MarkdownParse.java; java MarkdownParse test-file.md"` runs the three commands within the quotation marks on the remote server
