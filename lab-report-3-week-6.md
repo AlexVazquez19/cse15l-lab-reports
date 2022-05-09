@@ -19,3 +19,21 @@ After saving the file, I then connected to the remote server by typing `ssh ieng
 
 Setting up GitHub access from `ieng6`
 ---
+To enable pushing to origin from the command line in a cloned repository on my local computer, we need to add an SSH key to GitHub. Below is a screenshot of the public key that I added to my GitHub account.
+
+![screenshot 4](LR3-screenshots/LR3-screenshot4.png)
+
+Here is a screenshot of the private key on my local computer (stores in my .ssh directory). If I run the command `open id_rsa`, it opens the file as a text file and allows me to see the private key.
+
+![screenshot 5](LR3-screenshots/LR3-screenshot5.png)
+
+After adding the public key to my GitHub account, I went back to VScode and made a small edit to my local copy of MarkdownParse.java. Then I added it to the staging area using the command `git add MarkdownParse.java`, committed it using the command `git commit -m "adding a line"`, and finally pushed it to origin using the command `git push origin main`.
+
+![screenshot 6](LR3-screenshots/LR3-screenshot6.png)
+
+As seen by the [commit linked here](https://github.com/AlexVazquez19/markdown-parser/commit/8485a19950bc4e5b8119113940038765712f1c5f) (same as in the screenshot below), the commit worked properly and was pushed to the main repository on my GitHub account.
+
+![screenshot 7](LR3-screenshots/LR3-screenshot7.png)
+
+Copying Whole Directories with `scp -r`
+---
