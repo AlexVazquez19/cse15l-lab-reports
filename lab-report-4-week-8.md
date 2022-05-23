@@ -67,5 +67,14 @@ After running the test on the implementation of markdown-parse that I reviewed i
 
 Question Answers
 ---
-* A small change that could possibly fix the backtick issue is creating a new variable to track the index of backticks, and before adding a link to the list that is returned, check to see if there are backticks that break up the brackets. We could also add an if-statement that checks if there are backticks inside the URL; if the URL does contain backticks, then it won't be added to the list to be returned.
-* 
+* A small change that could possibly fix the backtick issue is creating two new variables to track the index of a pair of backticks (if there is a pair), and before adding a link to the list that is returned, check to see if there are backticks that break up the brackets or parenthesis. If there is a pair of backticks, we would have to check if they are contained within the brackets or if they outside/inside the brackets. We could use an if-statement to check if there are backticks inside the URL; if the URL does contain backticks, then it won't be added to the list to be returned since URLs cannot have backticks.
+* Because URLs cannot contain brackets or parentheses, this fix is pretty straight forward since all we have to do is check if the URL contains either. The solution for this would be to use an if-statement to check if the URL contains parentheses or brackets before adding it to the list to be returned. The if statement could look something like this: 
+```
+if (markdown.substring(openParen + 1, closeParen).contains("[") == false &&
+    markdown.substring(openParen + 1, closeParen).contains("]") == false &&
+    markdown.substring(openParen + 1, closeParen).contains("(") == false &&
+    markdown.substring(openParen + 1, closeParen).contains(")") == false &&) {
+      //add link to toReturn list
+}
+```
+* A small change that could fix the newline error in snippet 3 is trimming the link before adding it to the list to be returned. Basically you can just add `.trim()` to the line `toReturn.add(markdown.substring(openParen + 1, closeParen)`, so it becomes `toReturn.add(markdown.substring(openParen + 1, closeParen).trim()`. This will ensure there aren't any leading or trailing in the link when you add it to the list. On the other hand, if you consider links with leading/trailing spaces to be invalid, we would have to check if the indices of the opening and closing parenthesis holding the link have no spaces between them and the link.
